@@ -67,6 +67,26 @@ public class PhoneController extends HttpServlet {
 
 			response.sendRedirect("/phonebook2/pbc?action=list");
 
+		} else if("updateForm".equals(action)) {
+			//포워드
+			RequestDispatcher rd = request.getRequestDispatcher("/updateForm.jsp");
+			rd.forward(request, response);
+			
+		} else if("update".equals(action)) {
+			
+			String name = request.getParameter("name");
+			String hp = request.getParameter("hp");
+			String company = request.getParameter("company");
+			int id = Integer.parseInt(request.getParameter("id"));
+			
+			PersonVo personVo = new PersonVo(id, name, hp, company);
+			PhoneDao phoneDao = new PhoneDao();
+			
+			phoneDao.personUpdate(personVo);
+			
+			response.sendRedirect("/phonebook2/pbc?action=list");
+			
+			
 		} else if ("delete".equals(action)) {
 			int id = Integer.parseInt(request.getParameter("id"));
 			PhoneDao phoneDao = new PhoneDao();

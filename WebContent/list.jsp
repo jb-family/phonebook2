@@ -35,7 +35,7 @@
             <td><%=personList.get(i).getCompany() %></td>
          </tr>
          <tr>
-            <td><a href="./pbc?action=">[수정폼]</a></td>
+            <td><a href="./pbc?action=updateForm&id=<%=personList.get(i).getPersonId()%>">[수정폼]</a></td>
             <td><a href="./pbc?action=delete&id=<%=personList.get(i).getPersonId()%>">[삭제]</a></td>
          </tr>
       </table>
